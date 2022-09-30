@@ -1,8 +1,8 @@
-package Collections;
+package collections;
 
-import java.sql.DriverManager;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,14 +12,22 @@ public class Main {
         map.put("3", "Ba");
         map.put("4", "Bốn");
         List<Integer> list = new ArrayList<>();
-        Integer[] arr = {1, 5, 4, 6, 7, 3, 6, 4};
+        Integer [] arr = {1, 5, 4, 6, 7, 3, 6, 4};
 
+        // Đếm số lần xuất hiện các số trong arr
+        Set<Integer> set1 = (Set<Integer>) Arrays.asList(arr);
+
+        //
+        System.out.println("Sort with Stream API");
+        list =  Stream.of(arr).sorted((a1, a2) -> (a1 - a2)  ).collect(Collectors.toList());
+        list.forEach(a -> System.out.print(a + " "));
+        System.out.println(list.get(list.size() - 1));
 
         // 1. Sort Array Integer
             // Convert arr to list
         list = Arrays.asList(arr);
             // get list distinct by Stream API
-        list = list.stream().distinct().collect(Collectors.toList());
+//        list = list.stream().distinct().collect(Collectors.toList());
         Set<Integer> set = new HashSet<>(list);
             // Sort
         Collections.sort(list, new Comparator<Integer>() {
@@ -28,9 +36,9 @@ public class Main {
                 return -o1.compareTo(o2);
             }
         });
-        System.out.println("List : ");
+        System.out.println();
+        System.out.println("----List----");
         System.out.println(list.toString());
-        System.out.println(list.get(1));
         System.out.println("----Set----");
         set.forEach(p -> System.out.print(p + " "));
         // 2. Convert Map to List
