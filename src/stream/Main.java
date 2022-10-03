@@ -72,6 +72,7 @@ public class Main {
         System.out.println("Số học sinh tên A");
         System.out.println( students.stream().filter(s -> s.getName().equals("A")).count()
         );
+        // đây là branch core
 
 
 
